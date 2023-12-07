@@ -1,56 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Live code editer</title>
-  <link rel="stylesheet" href="style.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css"
+  >
+
+  <link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css"
+  >
+	<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="style.css"
+  > 
+
+  <link 
+  href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' 
+  rel='stylesheet'
+  >
+
 </head>
 <body>
-  <section class="container">
-    <h1>Live Code Editer</h1>
 
-    <div class="editer">
+<script 
+type="text/javascript" 
+src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"
+></script>
 
-      <div class="left">
-        <label>
-          <i class='bx bxl-html5'></i>
-          HTML
-        </label>
-        <textarea onkeyup="run()" spellcheck="false" id="html-code"></textarea>
-      </div>
+<script 
+type="text/javascript" 
+src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/javascript/javascript.min.js"
+></script>
 
-      <div class="left">
-        <label>
-          <i class='bx bxl-css3' ></i>
-          CSS
-        </label>
-        <textarea onkeyup="run()" spellcheck="false" id="css-code"></textarea>
-      </div>
+<script 
+src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/xml/xml.min.js"
+></script>
 
-      <div class="left">
-        <label>
-          <i class='bx bxl-javascript'></i>
-          JS
-        </label>
-        <textarea onkeyup="run()" spellcheck="false" id="js-code"></textarea>
-      </div>
+<script 
+src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/css/css.min.js"
+></script>
+
+<script 
+src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/addon/edit/closetag.min.js"
+></script>
 
 
-      <div class="right">
-        <div class="left">
-          <label>
-            <i class='bx bx-play'></i>
-            Preview
-          </label>
-          <iframe id="output"></iframe>
-        </div>
-      </div>
+<div class="codeeditor">
+	<section>
+    <label for="html_code">
+      <i class='bx bxl-html5'></i>
+      HTML
+    </label>
+    <div id="html-area" onkeyup="run()" > </div>		
+	</section>
 
-    </div>
-  </section>
+	<section>
+    <label for="css_code">
+      <i class='bx bxl-css3' ></i>
+      CSS
+    </label>
+		<div id="css-area" onkeyup="run()"> </div>
+	</section>
 
-<script src="coder.js"></script>  
+	<section>
+		<label for="js_code">
+      <i class='bx bxl-javascript'></i>
+      JS
+    </label>
+    <div id="script-area" onkeyup="run()"> </div>	
+	</section>
+
+</div>
+
+<div class="outputeditor">	
+  <label>
+    <i class='bx bx-play'></i>
+    Preview
+  </label>
+
+	<iframe id="output-frame"></iframe>
+</div>
+	
+<script src="coder.js"></script>
 </body>
 </html>

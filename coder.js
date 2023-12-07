@@ -1,10 +1,36 @@
-function run(){
-  let htmlcode = document.getElementById("html-code");
-  let csscode = document.getElementById("css-code");
-  let jscode = document.getElementById("js-code");
-  let output = document.getElementById("output");
+var htmlValue=CodeMirror(document.getElementById('html-area',), {
+  lineNumbers: true,
+  value:document.getElementById("html-area").innerText ,
+  tabSize: 2,
+  mode: "text/html",
+  autoCloseTags: true, 
+  theme: 'monokai'
+});
 
-  output.contentDocument.body.innerHTML = htmlcode.value + "<style>" + csscode.value + "</style>";
-  
-  output.contentWindow.eval(jscode.value);
+var cssValue=CodeMirror(document.querySelector('.codeeditor #css-area',), {
+  lineNumbers: true,
+  value:document.getElementById("css-area").innerText ,
+  tabSize: 2,
+  mode:'css',
+  theme: 'monokai'
+});
+
+var jsValue=CodeMirror(document.querySelector('.codeeditor #script-area',), {
+  lineNumbers: true,
+  value:document.getElementById("script-area").innerText ,
+  tabSize: 2,
+  mode: 'javascript',
+  theme: 'monokai'
+});
+
+function run(){		
+	
+  var htmlCode=htmlValue.getValue();			
+	
+  let cssCode="<style>"+cssValue.getValue()+"</style>";
+	let scriptCode=jsValue.getValue();
+	let output =document.querySelector(".outputeditor #output-frame");
+	
+  output.contentDocument.body.innerHTML=htmlCode+cssCode;
+	output.contentWindow.eval(scriptCode);
 }
